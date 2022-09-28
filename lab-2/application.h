@@ -26,10 +26,10 @@ class Application
 	EncapsulatedFloatWithMutex* b;
 
 	void firstJob(size_t iters);
-	void secondWork(size_t iters);
+	void secondJob(size_t iters);
 	void createFirstJobThreads(unsigned int amount);
 	void createSecondJobThreads(unsigned int threadsAmount);
-	void printWorkStatus(std::string workName);
+	void printJobStatus(std::string workName);
 	void createWorkers();
 	void waitAllWorkers();
 public:

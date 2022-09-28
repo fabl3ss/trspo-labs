@@ -67,7 +67,7 @@ void Application::createFirstJobThreads(unsigned int threadsAmount)
 void Application::createSecondJobThreads(unsigned int threadsAmount) 
 {
     auto work = std::bind(
-        &Application::secondWork, 
+        &Application::secondJob, 
         std::placeholders::_1,
         std::placeholders::_2
     );
@@ -84,22 +84,22 @@ void Application::createSecondJobThreads(unsigned int threadsAmount)
 void Application::firstJob(size_t iters)
 {
     for (size_t i = 0; i < iters; i++) {
-        this->printWorkStatus(__FUNCTION__);
+        this->printJobStatus(__FUNCTION__);
 	    a->setValue(a->getValue() + randomValue(this->_mt));
 	    b->setValue(b->getValue() + randomValue(this->_mt));
     }
 }
 
-void Application::secondWork(size_t iters) 
+void Application::secondJob(size_t iters) 
 {
     for (size_t i = 0; i < iters; i++) {
-        this->printWorkStatus(__FUNCTION__);
+        this->printJobStatus(__FUNCTION__);
 	    b->setValue(b->getValue() + 1);
 	    a->setValue(a->getValue() + 1);
     }
 }
 
-void Application::printWorkStatus(std::string workName)
+void Application::printJobStatus(std::string workName)
 {
     this->_mtx.lock();
     auto threadIdMaxLenght = 6;
