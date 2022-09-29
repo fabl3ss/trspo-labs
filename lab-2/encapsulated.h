@@ -10,20 +10,33 @@ class EncapsulatedFloatWithMutex : public Encapsulated<float>
 {
 private:
     std::mutex _mtx;
-    double _value;;
+    float _value;
 public:
     EncapsulatedFloatWithMutex() : _value(0) {}
     const float getValue() override 
     { 
+        double val;
         _mtx.lock();
-        auto val = this->_value;
+        try {
+            val = this->_value;
+        }
+        catch (std::exception &e) {
+            _mtx.unlock();
+            return this->_value;
+        };
         _mtx.unlock();
         return val; 
     }
     const void setValue(float newVal) override
     { 
         _mtx.lock();
-        this->_value = newVal; 
+        try {
+            this->_value = newVal; 
+        }
+        catch (std::exception& e) {
+            _mtx.unlock();
+            return;
+        }
         _mtx.unlock();
     } 
 };

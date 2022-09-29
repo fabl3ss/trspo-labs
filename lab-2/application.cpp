@@ -94,8 +94,8 @@ void Application::secondJob(size_t iters)
 {
     for (size_t i = 0; i < iters; i++) {
         this->printJobStatus(__FUNCTION__);
-	    b->setValue(b->getValue() + 1);
-	    a->setValue(a->getValue() + 1);
+	    b->setValue(b->getValue() + randomValue(this->_mt));
+	    a->setValue(a->getValue() + randomValue(this->_mt));
     }
 }
 
