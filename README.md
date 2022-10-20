@@ -8,4 +8,4 @@
 ### Лабораторна робота №3
 * Створив багатопоточну реалізацію проблеми 3n + 1
 * Реалізував можливість візуалізації у .png file
-![visualization_example](https://raw.github.com/fabl3ss/trspo-labs/lab-3/Collatz_Conjecture.png)
+![visualization_example](https://raw.github.com/fabl3ss/trspo-labs/lab3/lab-3/Collatz_Conjecture.png)
